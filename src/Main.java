@@ -3,7 +3,7 @@ import test.SubTaskTest;
 import test.TaskManagerTest;
 import test.TaskTest;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
         System.out.println("-----------Тест Таска-----------");
         TaskTest.main(args);
