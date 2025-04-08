@@ -1,14 +1,16 @@
-package main;
+package tasks;
+
+import status.Status;
 
 public class Subtask extends Task {
-    private final int epicID;
+    private int epicID; // Убираем final
 
-    public Subtask(String name, String description, int epicID) { // c новым
+    public Subtask(String name, String description, int epicID) {
         super(name, description);
         this.epicID = epicID;
     }
 
-    public Subtask(int id, String name, String description, Status status, int epicID) { // со всеми
+    public Subtask(int id, String name, String description, Status status, int epicID) {
         super(id, name, description, status);
         this.epicID = epicID;
     }
@@ -17,9 +19,13 @@ public class Subtask extends Task {
         return epicID;
     }
 
+    public void setEpicID(int epicID) { // Добавляем метод setEpicID
+        this.epicID = epicID;
+    }
+
     @Override
     public String toString() {
-        return "main.Subtask{" +
+        return "tasks.Subtask{" +
                 "name='" + getName() + '\'' +
                 ", description='" + getDescription() + '\'' +
                 ", id=" + getId() +
