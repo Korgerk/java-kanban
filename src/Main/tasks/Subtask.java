@@ -1,6 +1,6 @@
-package tasks;
+package Main.tasks;
 
-import status.Status;
+import Main.status.Status;
 
 public class Subtask extends Task {
     private int epicID; // Убираем final
@@ -25,12 +25,12 @@ public class Subtask extends Task {
 
     @Override
     public String toString() {
-        return "tasks.Subtask{" +
+        return "Main.tasks.Subtask{" +
                 "name='" + getName() + '\'' +
                 ", description='" + getDescription() + '\'' +
                 ", id=" + getId() +
                 ", epicID=" + epicID +
-                ", status=" + getStatus() +
+                ", Main.status=" + getStatus() +
                 '}';
     }
 }

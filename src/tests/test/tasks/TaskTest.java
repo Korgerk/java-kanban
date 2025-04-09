@@ -1,9 +1,9 @@
 package tests.test.tasks;
 
-import tasks.Task;
-import manager.TaskManager;
-import status.Status;
-import manager.Managers;
+import Main.tasks.Task;
+import Main.manager.TaskManager;
+import Main.status.Status;
+import Main.manager.Managers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

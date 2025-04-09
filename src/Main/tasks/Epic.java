@@ -1,6 +1,6 @@
-package tasks;
+package Main.tasks;
 
-import status.Status;
+import Main.status.Status;
 
 import java.util.ArrayList;
 
@@ -33,12 +33,12 @@ public class Epic extends Task {
 
     @Override
     public String toString() {
-        return "tasks.Epic{" +
+        return "Main.tasks.Epic{" +
                 "name= " + getName() + '\'' +
                 ", description = " + getDescription() + '\'' +
                 ", id=" + getId() +
                 ", subtaskList.size = " + subtaskList.size() +
-                ", status = " + getStatus() +
+                ", Main.status = " + getStatus() +
                 '}';
     }
 }
