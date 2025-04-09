@@ -1,4 +1,4 @@
-package Main.manager;
+package main.manager;
 
 public class Managers {
     public static TaskManager getDefault() {

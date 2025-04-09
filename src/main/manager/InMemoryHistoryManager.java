@@ -1,6 +1,6 @@
-package Main.manager;
+package main.manager;
 
-import Main.tasks.Task;
+import main.tasks.Task;
 
 import java.util.*;
 

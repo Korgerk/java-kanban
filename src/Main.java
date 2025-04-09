@@ -1,9 +1,9 @@
-import Main.manager.Managers;
-import Main.manager.TaskManager;
-import Main.status.Status;
-import Main.tasks.Epic;
-import Main.tasks.Subtask;
-import Main.tasks.Task;
+import main.manager.Managers;
+import main.manager.TaskManager;
+import main.status.Status;
+import main.tasks.Epic;
+import main.tasks.Subtask;
+import main.tasks.Task;
 
 public class Main {
     public static void main(String[] args) {

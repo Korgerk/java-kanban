@@ -1,10 +1,10 @@
 package tests.test.manager;
 
-import Main.manager.Managers;
-import Main.manager.TaskManager;
+import main.manager.Managers;
+import main.manager.TaskManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import Main.tasks.Task;
+import main.tasks.Task;
 
 import java.util.List;
 
