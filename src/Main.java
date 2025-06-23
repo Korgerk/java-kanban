@@ -5,6 +5,8 @@ import main.tasks.Epic;
 import main.tasks.Subtask;
 import main.tasks.Task;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         // Создаем менеджер задач
@@ -45,6 +47,13 @@ public class Main {
         System.out.println("-----После просмотра задач-----");
         printAllTasks(taskManager);
 
+        // Повторно открываем одну и ту же задачу — проверяем, что она не дублируется
+        taskManager.getTaskByID(task1.getId());
+
+        System.out.println();
+        System.out.println("-----После повторного просмотра задачи-----");
+        printAllTasks(taskManager);
+
         // Обновляем статусы
         task1.setStatus(Status.IN_PROGRESS);
         taskManager.updateTask(task1);
@@ -65,7 +74,6 @@ public class Main {
         System.out.println();
         System.out.println("-----После удаления задач-----");
         printAllTasks(taskManager);
-
 
         // Чистим всё. Также можно использовать clearAll();
         taskManager.clearSubtasks();
@@ -116,8 +124,9 @@ public class Main {
         }
 
         System.out.println("История просмотра:");
-        for (Task task : manager.getHistory()) {
-            System.out.println(task);
+        List<Task> history = manager.getHistory();
+        for (int i = 0; i < history.size(); i++) {
+            System.out.println((i + 1) + ". " + history.get(i));
         }
     }
 }

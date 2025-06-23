@@ -3,7 +3,7 @@ package main.tasks;
 import main.status.Status;
 
 public class Subtask extends Task {
-    private int epicID; // Убираем final
+    private int epicID;
 
     public Subtask(String name, String description, int epicID) {
         super(name, description);
@@ -19,18 +19,12 @@ public class Subtask extends Task {
         return epicID;
     }
 
-    public void setEpicID(int epicID) { // Добавляем метод setEpicID
+    public void setEpicID(int epicID) {
         this.epicID = epicID;
     }
 
     @Override
     public String toString() {
-        return "Main.tasks.Subtask{" +
-                "name='" + getName() + '\'' +
-                ", description='" + getDescription() + '\'' +
-                ", id=" + getId() +
-                ", epicID=" + epicID +
-                ", Main.status=" + getStatus() +
-                '}';
+        return getName() + " (ID: " + getId() + ", Эпик: " + epicID + ", Статус: " + getStatus() + ")";
     }
 }

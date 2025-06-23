@@ -1,4 +1,4 @@
-package tests.test.tasks;
+package tests.tasks;
 
 import main.tasks.Epic;
 import main.tasks.Subtask;
@@ -15,7 +15,7 @@ public class EpicTest {
 
     @BeforeEach
     void setUp() {
-        taskManager = Managers.getDefault(); // Используем getDefault для получения менеджера
+        taskManager = Managers.getDefault();
     }
 
     @Test
@@ -29,13 +29,10 @@ public class EpicTest {
     void testAddSubtasksToEpic() {
         Epic epic = new Epic("Эпик 1", "Описание эпика 1");
         taskManager.addEpic(epic);
-
         Subtask subtask1 = new Subtask("Подзадача 1", "Описание подзадачи 1", epic.getId());
         Subtask subtask2 = new Subtask("Подзадача 2", "Описание подзадачи 2", epic.getId());
-
         taskManager.addSubtask(subtask1);
         taskManager.addSubtask(subtask2);
-
         assertEquals(2, taskManager.getEpicByID(epic.getId()).getSubtaskList().size());
     }
 
@@ -43,19 +40,14 @@ public class EpicTest {
     void testUpdateEpicStatusWhenAllSubtasksAreDone() {
         Epic epic = new Epic("Эпик 1", "Описание эпика 1");
         taskManager.addEpic(epic);
-
         Subtask subtask1 = new Subtask("Подзадача 1", "Описание подзадачи 1", epic.getId());
         Subtask subtask2 = new Subtask("Подзадача 2", "Описание подзадачи 2", epic.getId());
-
         taskManager.addSubtask(subtask1);
         taskManager.addSubtask(subtask2);
-
         subtask1.setStatus(Status.DONE);
         subtask2.setStatus(Status.DONE);
-
         taskManager.updateSubtask(subtask1);
         taskManager.updateSubtask(subtask2);
-
         assertEquals(Status.DONE, taskManager.getEpicByID(epic.getId()).getStatus());
     }
 
@@ -63,7 +55,6 @@ public class EpicTest {
     void testDeleteEpicByID() {
         Epic epic = new Epic("Эпик 1", "Описание эпика 1");
         taskManager.addEpic(epic);
-
         taskManager.deleteEpicByID(epic.getId());
         assertNull(taskManager.getEpicByID(epic.getId()));
     }

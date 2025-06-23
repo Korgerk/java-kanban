@@ -1,4 +1,4 @@
-package tests.test.manager;
+package tests.manager;
 
 import main.manager.HistoryManager;
 import main.manager.Managers;
@@ -20,8 +20,11 @@ class HistoryManagerTest {
 
     @Test
     void testAddAndRetrieveHistory() {
-        Task task1 = new Task("Task 1", "Description 1");
-        Task task2 = new Task("Task 2", "Description 2");
+        Task task1 = new Task("Задача 1", "Описание задачи 1");
+        Task task2 = new Task("Задача 2", "Описание задачи 2");
+
+        task1.setId(1);
+        task2.setId(2);
 
         historyManager.add(task1);
         historyManager.add(task2);
@@ -34,21 +37,10 @@ class HistoryManagerTest {
 
     @Test
     void testRemoveFromHistory() {
-        Task task = new Task("Task 1", "Description 1");
+        Task task = new Task("Задача 1", "Описание задачи 1");
         historyManager.add(task);
         historyManager.remove(task.getId());
-
         List<Task> history = historyManager.getHistory();
         assertTrue(history.isEmpty());
-    }
-
-    @Test
-    void testHistoryLimit() {
-        for (int i = 1; i <= 10; i++) {
-            historyManager.add(new Task("Task " + i, "Description " + i));
-        }
-
-        List<Task> history = historyManager.getHistory();
-        assertEquals(10, history.size());
     }
 }

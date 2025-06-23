@@ -1,4 +1,4 @@
-package tests.test.tasks;
+package tests.tasks;
 
 import main.tasks.Epic;
 import main.tasks.Subtask;
@@ -22,10 +22,8 @@ public class SubTaskTest {
     void testAddAndGetSubtask() {
         Epic epic = new Epic("Эпик 1", "Описание эпика 1");
         taskManager.addEpic(epic);
-
         Subtask subtask = new Subtask("Подзадача 1", "Описание подзадачи 1", epic.getId());
         taskManager.addSubtask(subtask);
-
         assertEquals(subtask, taskManager.getSubtaskByID(subtask.getId()));
     }
 
@@ -33,13 +31,10 @@ public class SubTaskTest {
     void testUpdateSubtaskStatus() {
         Epic epic = new Epic("Эпик 1", "Описание эпика 1");
         taskManager.addEpic(epic);
-
         Subtask subtask = new Subtask("Подзадача 1", "Описание подзадачи 1", epic.getId());
         taskManager.addSubtask(subtask);
-
         subtask.setStatus(Status.IN_PROGRESS);
         taskManager.updateSubtask(subtask);
-
         assertEquals(Status.IN_PROGRESS, taskManager.getSubtaskByID(subtask.getId()).getStatus());
     }
 
@@ -47,10 +42,8 @@ public class SubTaskTest {
     void testDeleteSubtaskByID() {
         Epic epic = new Epic("Эпик 1", "Описание эпика 1");
         taskManager.addEpic(epic);
-
         Subtask subtask = new Subtask("Подзадача 1", "Описание подзадачи 1", epic.getId());
         taskManager.addSubtask(subtask);
-
         taskManager.deleteSubtaskByID(subtask.getId());
         assertNull(taskManager.getSubtaskByID(subtask.getId()));
     }
