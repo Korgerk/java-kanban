@@ -1,4 +1,4 @@
-package tests.tasks;
+package test.tasks;
 
 import main.tasks.Task;
 import main.manager.TaskManager;
