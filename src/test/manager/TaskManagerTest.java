@@ -1,4 +1,4 @@
-package tests.manager;
+package test.manager;
 
 import main.tasks.Epic;
 import main.tasks.Subtask;
