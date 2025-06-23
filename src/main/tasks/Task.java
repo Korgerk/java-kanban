@@ -1,7 +1,6 @@
 package main.tasks;
 
 import main.status.Status;
-
 import java.util.Objects;
 
 public class Task {
@@ -56,27 +55,20 @@ public class Task {
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        Task task = (Task) object;
-        return id == task.id && Objects.equals(name, task.name)
-                && Objects.equals(description, task.description)
-                && status == task.status;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Task)) return false;
+        Task other = (Task) o;
+        return id == other.id; // Сравниваем по ID
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, status);
+        return Objects.hash(id);
     }
 
     @Override
     public String toString() {
-        return "Main.tasks.Task{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", id=" + id +
-                ", Main.status=" + status +
-                '}';
+        return getName() + " (ID: " + getId() + ", Статус: " + getStatus() + ")";
     }
 }

@@ -7,11 +7,11 @@ import java.util.ArrayList;
 public class Epic extends Task {
     private ArrayList<Subtask> subtaskList = new ArrayList<>();
 
-    public Epic(String name, String description) { // статус новый
+    public Epic(String name, String description) {
         super(name, description);
     }
 
-    public Epic(int id, String name, String description, Status status) { // конструктор всего
+    public Epic(int id, String name, String description, Status status) {
         super(id, name, description, status);
     }
 
@@ -19,7 +19,7 @@ public class Epic extends Task {
         subtaskList.add(subtask);
     }
 
-    public void clearSubtasks() { // очистка подзадач
+    public void clearSubtasks() {
         subtaskList.clear();
     }
 
@@ -33,12 +33,6 @@ public class Epic extends Task {
 
     @Override
     public String toString() {
-        return "Main.tasks.Epic{" +
-                "name= " + getName() + '\'' +
-                ", description = " + getDescription() + '\'' +
-                ", id=" + getId() +
-                ", subtaskList.size = " + subtaskList.size() +
-                ", Main.status = " + getStatus() +
-                '}';
+        return getName() + " (ID: " + getId() + ", Статус: " + getStatus() + ", Подзадач: " + subtaskList.size() + ")";
     }
 }
