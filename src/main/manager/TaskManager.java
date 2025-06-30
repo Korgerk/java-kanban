@@ -31,9 +31,9 @@ public interface TaskManager {
 
     void clearSubtasks();
 
-    void clearHistory();
-
     void clearAll();
+
+    void clearHistory();
 
     void deleteTaskByID(int id);
 

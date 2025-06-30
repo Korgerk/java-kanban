@@ -5,9 +5,9 @@ import main.status.Status;
 import java.util.Objects;
 
 public class Task {
+    private int id;
     private String name;
     private String description;
-    private int id;
     private Status status;
 
     public Task(int id, String name, String description, Status status) {
@@ -21,6 +21,27 @@ public class Task {
         this.name = name;
         this.description = description;
         this.status = Status.NEW;
+    }
+
+    public Task(String name, String description, Status status) {
+        this.name = name;
+        this.description = description;
+        this.status = status;
+    }
+
+    public Task(int id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.status = Status.NEW;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -39,14 +60,6 @@ public class Task {
         this.description = description;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public Status getStatus() {
         return status;
     }
@@ -59,8 +72,8 @@ public class Task {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Task)) return false;
-        Task other = (Task) o;
-        return id == other.id; // Сравниваем по ID
+        Task task = (Task) o;
+        return id == task.id;
     }
 
     @Override

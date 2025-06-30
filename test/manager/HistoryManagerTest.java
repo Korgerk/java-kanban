@@ -20,7 +20,7 @@ class HistoryManagerTest {
 
     @Test
     void testAddAndRetrieveHistory() {
-        Task task1 = new Task("Задача 1", "Описание задачи 1");
+        Task task1 = new Task(0, "Задача 1", "Описание задачи 1");
         Task task2 = new Task("Задача 2", "Описание задачи 2");
 
         task1.setId(1);
