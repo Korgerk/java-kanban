@@ -5,7 +5,6 @@ import main.tasks.Task;
 import java.util.*;
 
 public class InMemoryHistoryManager implements HistoryManager {
-
     private static class Node {
         Task task;
         Node prev;
@@ -23,10 +22,14 @@ public class InMemoryHistoryManager implements HistoryManager {
     @Override
     public void add(Task task) {
         if (task == null) return;
+
+        // Если уже есть — удаляем из текущей позиции
         if (historyMap.containsKey(task.getId())) {
             removeNode(historyMap.get(task.getId()));
         }
+
         Node newNode = new Node(task);
+
         if (tail == null) {
             head = tail = newNode;
         } else {
@@ -34,12 +37,19 @@ public class InMemoryHistoryManager implements HistoryManager {
             newNode.prev = tail;
             tail = newNode;
         }
+
         historyMap.put(task.getId(), newNode);
     }
 
-    private void removeNode(Node node) {
-        if (node == null) return;
+    @Override
+    public void remove(int id) {
+        Node node = historyMap.remove(id);
+        if (node != null) {
+            removeNode(node);
+        }
+    }
 
+    private void removeNode(Node node) {
         if (node.prev != null) {
             node.prev.next = node.next;
         } else {
@@ -50,17 +60,6 @@ public class InMemoryHistoryManager implements HistoryManager {
             node.next.prev = node.prev;
         } else {
             tail = node.prev;
-        }
-
-        node.prev = null;
-        node.next = null;
-    }
-
-    @Override
-    public void remove(int id) {
-        Node node = historyMap.remove(id);
-        if (node != null) {
-            removeNode(node);
         }
     }
 

@@ -1,5 +1,6 @@
 package main.manager;
 
+import main.status.Status;
 import main.tasks.Epic;
 import main.tasks.Subtask;
 import main.tasks.Task;
@@ -31,9 +32,9 @@ public interface TaskManager {
 
     void clearSubtasks();
 
-    void clearHistory();
-
     void clearAll();
+
+    void clearHistory();
 
     void deleteTaskByID(int id);
 
