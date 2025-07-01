@@ -56,16 +56,16 @@ public class Main {
 
     private static void printAll(TaskManager manager) {
         System.out.println("\n---ЗАДАЧИ---");
-        for (Task t : manager.getTasks()) {
-            System.out.println(t);
+        for (Task task : manager.getTasks()) {
+            System.out.println(task);
         }
 
         System.out.println("\n---ЭПИКИ---");
-        for (Epic e : manager.getEpics()) {
-            System.out.println(e);
+        for (Epic epic : manager.getEpics()) {
+            System.out.println(epic);
             System.out.println("---ПОДЗАДАЧИ---");
-            for (Subtask s : e.getSubtaskList()) {
-                System.out.println("  - " + s);
+            for (Subtask subtask : epic.getSubtaskList()) {
+                System.out.println("  - " + subtask);
             }
         }
 

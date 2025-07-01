@@ -125,19 +125,18 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 }
             }
 
-        } catch (IOException e) {
-            throw new ManagerSaveException("Ошибка при сохранении файла: " + e.getMessage());
+        } catch (IOException exception) {
+            throw new ManagerSaveException("Ошибка при сохранении файла: " + exception.getMessage());
         }
     }
 
     private String taskToString(Task task) {
         if (task instanceof Epic epic) {
-            return epic.getId() + ",EPIC," + epic.getName() + "," + epic.getStatus() + "," + epic.getDescription() + ",";
+            return String.format("%d,EPIC,%s,%s,%s,", epic.getId(), epic.getName(), epic.getStatus(), epic.getDescription());
         } else if (task instanceof Subtask subtask) {
-            return subtask.getId() + ",SUBTASK," + subtask.getName() + "," + subtask.getStatus() + ","
-                    + subtask.getDescription() + "," + subtask.getEpicID();
+            return String.format("%d,SUBTASK,%s,%s,%s,%d", subtask.getId(), subtask.getName(), subtask.getStatus(), subtask.getDescription(), subtask.getEpicID());
         } else {
-            return task.getId() + ",TASK," + task.getName() + "," + task.getStatus() + "," + task.getDescription() + ",";
+            return String.format("%d,TASK,%s,%s,%s,", task.getId(), task.getName(), task.getStatus(), task.getDescription());
         }
     }
 
@@ -177,8 +176,8 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 super.addTask(task);
             }
 
-        } catch (IOException e) {
-            throw new ManagerSaveException("Ошибка при загрузке файла: " + e.getMessage());
+        } catch (IOException exception) {
+            throw new ManagerSaveException("Ошибка при загрузке файла: " + exception.getMessage());
         }
     }
 

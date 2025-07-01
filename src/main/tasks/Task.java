@@ -69,10 +69,10 @@ public class Task {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Task)) return false;
-        Task task = (Task) o;
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof Task)) return false;
+        Task task = (Task) object;
         return id == task.id;
     }
 
@@ -83,6 +83,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return getName() + " (ID: " + getId() + ", Статус: " + getStatus() + ")";
+        return String.format("%s (ID: %d, Статус: %s)", getName(), getId(), getStatus());
     }
 }
