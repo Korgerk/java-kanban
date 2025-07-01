@@ -25,6 +25,6 @@ public class Subtask extends Task {
 
     @Override
     public String toString() {
-        return getName() + " (ID: " + getId() + ", Эпик: " + epicID + ", Статус: " + getStatus() + ")";
+        return String.format("%s (ID: %d, Эпик: %d, Статус: %s)", getName(), getId(), getEpicID(), getStatus());
     }
 }
