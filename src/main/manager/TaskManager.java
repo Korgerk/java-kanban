@@ -48,4 +48,8 @@ public interface TaskManager {
     Subtask updateSubtask(Subtask subtask);
 
     List<Task> getHistory();
+
+    List<Task> getPrioritizedTasks();
+
+    boolean isOverlapping(Task task);
 }

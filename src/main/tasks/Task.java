@@ -2,6 +2,8 @@ package main.tasks;
 
 import main.status.Status;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Task {
@@ -9,6 +11,8 @@ public class Task {
     private String name;
     private String description;
     private Status status;
+    private LocalDateTime startTime;
+    private Duration duration;
 
     public Task(int id, String name, String description, Status status) {
         this.id = id;
@@ -68,12 +72,33 @@ public class Task {
         this.status = status;
     }
 
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    public LocalDateTime getEndTime() {
+        if (startTime == null || duration == null) return null;
+        return startTime.plus(duration);
+    }
+
     @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (!(object instanceof Task)) return false;
-        Task task = (Task) object;
-        return id == task.id;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Task)) return false;
+        Task other = (Task) obj;
+        return id == other.id;
     }
 
     @Override

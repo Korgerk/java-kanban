@@ -5,6 +5,7 @@ import main.tasks.Epic;
 import main.tasks.Subtask;
 import main.tasks.Task;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class InMemoryTaskManager implements TaskManager {
@@ -12,6 +13,7 @@ public class InMemoryTaskManager implements TaskManager {
     private final Map<Integer, Epic> epics = new HashMap<>();
     private final Map<Integer, Subtask> subtasks = new HashMap<>();
     private final HistoryManager historyManager;
+    private final SortedSet<Task> prioritizedTasks = new TreeSet<>(Comparator.comparing(Task::getStartTime, Comparator.nullsLast(Comparator.naturalOrder())));
     private int nextID = 1;
 
     public InMemoryTaskManager(HistoryManager historyManager) {
@@ -23,6 +25,9 @@ public class InMemoryTaskManager implements TaskManager {
         task.setId(nextID++);
         tasks.put(task.getId(), task);
         historyManager.add(task);
+        if (task.getStartTime() != null) {
+            prioritizedTasks.add(task);
+        }
     }
 
     @Override
@@ -43,6 +48,9 @@ public class InMemoryTaskManager implements TaskManager {
         epic.addSubtask(subtask);
         updateEpicStatus(epic);
         historyManager.add(subtask);
+        if (subtask.getStartTime() != null) {
+            prioritizedTasks.add(subtask);
+        }
     }
 
     @Override
@@ -178,7 +186,6 @@ public class InMemoryTaskManager implements TaskManager {
         if (subtaskId == null || !subtasks.containsKey(subtaskId)) {
             return null;
         }
-
         Epic epic = epics.get(subtask.getEpicID());
         if (epic == null) {
             return null;
@@ -199,6 +206,44 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
+    public List<Task> getPrioritizedTasks() {
+        return new ArrayList<>(prioritizedTasks);
+    }
+
+    @Override
+    public boolean isOverlapping(Task task) {
+        LocalDateTime start = task.getStartTime();
+        LocalDateTime end = task.getEndTime();
+        if (start == null || end == null) return false;
+
+        for (Task other : tasks.values()) {
+            if (other == task) continue;
+
+            LocalDateTime otherStart = other.getStartTime();
+            LocalDateTime otherEnd = other.getEndTime();
+
+            if (otherStart == null || otherEnd == null) continue;
+
+            if (start.isBefore(otherEnd) && end.isAfter(otherStart)) {
+                return true;
+            }
+        }
+
+        for (Subtask subtask : subtasks.values()) {
+            LocalDateTime otherStart = subtask.getStartTime();
+            LocalDateTime otherEnd = subtask.getEndTime();
+
+            if (otherStart == null || otherEnd == null) continue;
+
+            if (start.isBefore(otherEnd) && end.isAfter(otherStart)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
     public void clearAll() {
         tasks.clear();
         epics.clear();
@@ -208,13 +253,12 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void clearHistory() {
-
+        historyManager.clearHistory();
     }
 
     private void updateEpicStatus(Epic epic) {
         boolean allDone = true;
         boolean allNew = true;
-
         for (Subtask subtask : epic.getSubtaskList()) {
             if (subtask.getStatus() != Status.DONE) allDone = false;
             if (subtask.getStatus() != Status.NEW) allNew = false;

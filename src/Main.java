@@ -31,7 +31,6 @@ public class Main {
 
         printAll(manager);
 
-
         System.out.println("\n\nОбновляем статусы");
         task1.setStatus(Status.IN_PROGRESS);
         manager.updateTask(task1);
