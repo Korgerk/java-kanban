@@ -2,6 +2,9 @@ package main.tasks;
 
 import main.status.Status;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 public class Subtask extends Task {
     private int epicID;
 
@@ -21,6 +24,26 @@ public class Subtask extends Task {
 
     public void setEpicID(int epicID) {
         this.epicID = epicID;
+    }
+
+    @Override
+    public LocalDateTime getStartTime() {
+        return super.getStartTime();
+    }
+
+    @Override
+    public void setStartTime(LocalDateTime startTime) {
+        super.setStartTime(startTime);
+    }
+
+    @Override
+    public Duration getDuration() {
+        return super.getDuration();
+    }
+
+    @Override
+    public void setDuration(Duration duration) {
+        super.setDuration(duration);
     }
 
     @Override
