@@ -1,0 +1,9 @@
+./test/manager/HistoryManagerTest.java
+./test/manager/InMemoryTaskManagerTest.java
+./test/manager/IntegrationTest.java
+./test/manager/OverlapTest.java
+./test/manager/PrioritizedTasksTest.java
+./test/manager/TaskManagerTest.java
+./test/tasks/EpicTest.java
+./test/tasks/SubTaskTest.java
+./test/tasks/TaskTest.java
