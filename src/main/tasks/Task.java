@@ -94,10 +94,10 @@ public class Task {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof Task)) return false;
-        Task other = (Task) obj;
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof Task)) return false;
+        Task other = (Task) object;
         return id == other.id;
     }
 
