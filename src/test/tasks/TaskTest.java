@@ -1,12 +1,14 @@
 package test.tasks;
 
-import main.tasks.Task;
+import main.manager.Managers;
 import main.manager.TaskManager;
 import main.status.Status;
-import main.manager.Managers;
+import main.tasks.Task;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class TaskTest {
     private TaskManager taskManager;

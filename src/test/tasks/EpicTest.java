@@ -1,13 +1,15 @@
 package test.tasks;
 
-import main.tasks.Epic;
-import main.tasks.Subtask;
+import main.manager.Managers;
 import main.manager.TaskManager;
 import main.status.Status;
-import main.manager.Managers;
+import main.tasks.Epic;
+import main.tasks.Subtask;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class EpicTest {
     private TaskManager taskManager;

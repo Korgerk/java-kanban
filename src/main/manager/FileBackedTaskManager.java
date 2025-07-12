@@ -198,7 +198,6 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
             Map<Integer, Subtask> subtasks = new HashMap<>();
             Map<Integer, Task> tasks = new HashMap<>();
 
-            // Сначала загружаем все задачи
             for (int i = 1; i < lines.size(); i++) {
                 String line = lines.get(i);
                 Task task = fromString(line);
