@@ -69,8 +69,7 @@ public class TaskHandler extends BaseHttpHandler implements HttpHandler {
                     break;
                 default:
                     sendText(exchange, """
-                            {
-                            "error": "Метод не поддерживается"
+                            {"error": "Метод не поддерживается"
                             }""", 405);
             }
         } catch (Exception e) {

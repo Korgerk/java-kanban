@@ -23,31 +23,27 @@ public class BaseHttpHandler {
 
     protected void sendNotFound(HttpExchange h, String message) throws IOException {
         sendText(h, """
-                {
-                "error": "%s"
+                {"error": "%s"
                 }""".formatted(message), 404);
     }
 
     protected void sendHasInteractions(HttpExchange h) throws IOException {
         sendText(h, """
-                {
-                "error": "Задача пересекается с существующими"
+                {"error": "Задача пересекается с существующими"
                 }""", 406);
     }
 
     protected void sendServerError(HttpExchange h, Exception e) throws IOException {
         String errorMessage = e.getMessage() != null ? e.getMessage() : "Неизвестная ошибка";
         sendText(h, """
-                {
-                "error": "%s"
+                {"error": "%s"
                 }""".formatted(errorMessage), 500);
 
     }
 
     protected void sendSuccess(HttpExchange h, String message, int code) throws IOException {
         sendText(h, """
-                {
-                "message": "%s"
+                {"message": "%s"
                 }""".formatted(message), code);
     }
 }
