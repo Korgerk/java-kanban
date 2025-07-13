@@ -68,9 +68,10 @@ public class SubtaskHandler extends BaseHttpHandler implements HttpHandler {
                     }
                     break;
                 default:
-                    sendText(exchange, """
-                            {"error": "Метод не поддерживается"}
-                            """, 405);
+                    sendText(exchange, "{\"error\":\"Метод не поддерживается\"}", 405);
+                    // sendText(exchange, """
+                    //         {"error": "Метод не поддерживается"}""", 405);
+                    // Не хочет проходить Checkstyle. Leading braces [RegexpSinglelineJava]
             }
         } catch (Exception e) {
             sendServerError(exchange, e);
