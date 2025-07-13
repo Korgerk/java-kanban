@@ -165,12 +165,10 @@ public class InMemoryTaskManager implements TaskManager {
         ArrayList<Subtask> oldSubtasks = oldEpic.getSubtaskList();
         ArrayList<Subtask> newSubtasks = epic.getSubtaskList();
 
-        // Удаляем старые подзадачи из общего списка
         for (Subtask subtask : oldSubtasks) {
             subtasks.remove(subtask.getId());
         }
 
-        // Добавляем новые подзадачи
         for (Subtask subtask : newSubtasks) {
             subtasks.put(subtask.getId(), subtask);
         }
@@ -191,7 +189,6 @@ public class InMemoryTaskManager implements TaskManager {
             return null;
         }
 
-        // Обновляем подзадачу в списке эпика
         List<Subtask> subtaskList = epic.getSubtaskList();
         for (int i = 0; i < subtaskList.size(); i++) {
             if (subtaskList.get(i).getId() == subtaskId) {

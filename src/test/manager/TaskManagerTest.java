@@ -1,14 +1,15 @@
 package test.manager;
 
 import main.manager.InMemoryTaskManager;
+import main.manager.Managers;
+import main.manager.TaskManager;
 import main.tasks.Epic;
 import main.tasks.Subtask;
 import main.tasks.Task;
-import main.manager.TaskManager;
-import main.manager.Managers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public abstract class TaskManagerTest<I> {
     public TaskManager taskManager;
