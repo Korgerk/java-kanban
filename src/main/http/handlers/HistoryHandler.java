@@ -21,7 +21,7 @@ public class HistoryHandler extends BaseHttpHandler implements HttpHandler {
             sendText(exchange, gson.toJson(taskManager.getHistory()), 200);
         } else {
             sendText(exchange, """
-                {"error": "Метод не поддерживается"}""", 405);
+                    {"error": "Метод не поддерживается"}""", 405);
         }
     }
 }

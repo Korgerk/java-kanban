@@ -17,11 +17,16 @@ public class PrioritizedHandler extends BaseHttpHandler implements HttpHandler {
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        if ("GET".equals(exchange.getRequestMethod())) {
-            sendText(exchange, gson.toJson(taskManager.getPrioritizedTasks()), 200);
-        } else {
-            sendText(exchange, """
-                {"error": "Метод не поддерживается"}""", 405);
+        String method = exchange.getRequestMethod();
+
+        switch (method) {
+            case "GET":
+                sendText(exchange, gson.toJson(taskManager.getPrioritizedTasks()), 200);
+                break;
+            default:
+                sendText(exchange, """
+                        {"error": "Метод не поддерживается"}""", 405);
+                break;
         }
     }
 }
